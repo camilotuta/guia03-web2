@@ -1,0 +1,125 @@
+/* Simple, clean styles for CRUD app */
+:root {
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --accent: #2f80ed;
+  --muted: #6b7280;
+  --danger: #e74c3c;
+  --radius: 8px;
+  --maxw: 980px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family:
+    Inter,
+    Segoe UI,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background: var(--bg);
+  color: #111;
+  margin: 0;
+  padding: 24px;
+}
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: transparent;
+}
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+h1 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+}
+.btn-secondary {
+  background: #4b5563;
+}
+.btn-danger {
+  background: var(--danger);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(47, 128, 237, 0.12);
+}
+.table-wrap {
+  overflow: auto;
+  border-radius: 6px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+}
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eef2f7;
+}
+th {
+  background: #f3f6fb;
+  color: var(--muted);
+  font-weight: 600;
+}
+tr:hover td {
+  background: linear-gradient(90deg, rgba(47, 128, 237, 0.03), transparent);
+}
+form .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  padding: 8px 10px;
+  border: 1px solid #e6eef6;
+  border-radius: 6px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  th,
+  td {
+    padding: 8px;
+  }
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
