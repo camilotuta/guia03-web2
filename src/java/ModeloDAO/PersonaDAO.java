@@ -3,11 +3,11 @@ package ModeloDAO;
 import Config.Conexion;
 import Interfaces.CRUD;
 import Modelo.Persona;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonaDAO implements CRUD {
@@ -22,8 +22,8 @@ public class PersonaDAO implements CRUD {
         ArrayList<Persona> lista = new ArrayList<>();
         String sql = "select * from persona";
         try (Connection conn = cn.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rsLocal = stmt.executeQuery()) {
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rsLocal = stmt.executeQuery()) {
             while (rsLocal.next()) {
                 Persona per = new Persona();
                 per.setId(rsLocal.getInt("id"));
@@ -48,7 +48,7 @@ public class PersonaDAO implements CRUD {
         Persona per = new Persona();
         String sql = "select * from persona where id = ?";
         try (Connection conn = cn.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rsLocal = stmt.executeQuery()) {
                 if (rsLocal.next()) {
@@ -73,7 +73,7 @@ public class PersonaDAO implements CRUD {
     public boolean add(Persona per) {
         String sql = "insert into persona(DNI, Nombres) values(?,?)";
         try (Connection conn = cn.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, per.getDni());
             stmt.setString(2, per.getNombre());
             int rows = stmt.executeUpdate();
@@ -89,7 +89,7 @@ public class PersonaDAO implements CRUD {
     public boolean edit(Persona per) {
         String sql = "update persona set DNI = ?, Nombres = ? where id = ?";
         try (Connection conn = cn.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, per.getDni());
             stmt.setString(2, per.getNombre());
             stmt.setInt(3, per.getId());
@@ -106,7 +106,7 @@ public class PersonaDAO implements CRUD {
     public boolean eliminar(int id) {
         String sql = "delete from persona where id = ?";
         try (Connection conn = cn.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             int rows = stmt.executeUpdate();
             return rows > 0;
